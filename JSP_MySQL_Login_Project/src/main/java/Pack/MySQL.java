@@ -131,6 +131,7 @@ public class MySQL {
 		return checknum;
 	}
 	
+<<<<<<< HEAD
 	public boolean readall(String id, String name, String num) {
 		String sql = " select * from UserList ";
 		PreparedStatement pstmt = null;
@@ -170,6 +171,9 @@ public class MySQL {
 	}
 	
 public String findID(String name, String email) {
+=======
+	public String findID(String name, String email) {
+>>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
 		
 		String sql = " select * from UserList ";
 		PreparedStatement pstmt = null;
@@ -210,6 +214,10 @@ public String findID(String name, String email) {
 		}
 		return resultID;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
 
 	public void update(String id, String pw) {
 		String sql = "update table01 set PW=? where ID=?";

@@ -9,7 +9,10 @@
 <body align = 'center'>
 <%
 String CheckValue;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
 if(request.getParameter("CheckValue") != null) {
 	CheckValue = request.getParameter("CheckValue");
 } else {
@@ -37,7 +40,10 @@ if(CheckValue.equals("checked")){
 	Check_text = " ";
 	Submit_able = "disabled";
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
 String id;
 if(request.getParameter("id") != null) {
 	id = request.getParameter("id");
@@ -45,6 +51,7 @@ if(request.getParameter("id") != null) {
 	id = "";
 }
 %>
+<<<<<<< HEAD
 	<h1> 회원가입</h1>
 	<hr/>
  	<form action="IDCheck.jsp" method="post">
@@ -58,17 +65,35 @@ if(request.getParameter("id") != null) {
     <form name="login" action="Check.jsp" method="post">
     <input type="hidden" name="id" value="<%=id%>">
       비밀번호<br/> 
+=======
+ 	<form action="IDCheck.jsp" method="post">
+      아이디<br/>
+      <input type="text" name="id" placeholder="아이디 입력" value="<%=id%>">
+      <input type="hidden" name="CheckValue" value="<%=CheckValue%>" >
+      <input type="submit" value="중복 확인"><br/>
+    </form>
+      <a style="color: <%=Check_color%>;"><%=Check_text%></a><br/><br/>
+    <form name="login" action="Check.jsp" method="post">
+    <input type="hidden" name="id" value="<%=id%>">
+      비밀번호<br/>
+>>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
       <input type="password" name="pass" placeholder="비밀번호 입력"><br/><br/>
-      이름<br/>  
+      이름<br/>
       <input type="text" name="name" placeholder="이름 입력"> <br/><br/>
       이메일<br/>
       <input type="email" name="email" placeholder="이메일 입력"><br/><br/>
-      휴대전화<br/>  
+      휴대전화<br/>
       <input type="text" name="num" placeholder="010-****-****"><br/><br/>
+<<<<<<< HEAD
       생년월일(8자리)<br/> 
  	  <input type="text" name="date" placeholder="19941234"><br/><br/>
  	  <button style='background-color:#FFC0CB; color:#ffffff; border:0; border-radius:20px; width:100px; height:30px;' <%=Submit_able%>>가입완료</button>
   
+=======
+      생년월일(8자리)<br/>
+ 	  <input type="text" name="date" placeholder="941234"><br/><br/>
+      <input type="submit" value="가입완료" <%=Submit_able%>>
+>>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
  </form>
 </body>
 </html>
