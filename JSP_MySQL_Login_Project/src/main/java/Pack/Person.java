@@ -2,12 +2,12 @@ package Pack;
 
 // get, set 만들려고 왔다.
 public class Person {
-	String id;
-	String pass;
-	String name;
-	String email;
-	String num;
-	String date;
+	String id ="";
+	String pass ="";
+	String name ="";
+	String email ="";
+	String num ="";
+	String date ="";
 	
 	public Person() { System.out.println("생성자콜"); }
 
