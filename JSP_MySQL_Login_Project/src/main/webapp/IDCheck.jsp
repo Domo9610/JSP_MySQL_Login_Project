@@ -18,9 +18,8 @@
 	<% 
 		String id=null;
 		String result=null;
-		String check=null;
 		
-		id=person.getId();
+		id = request.getParameter("id");
 		result=mysql.readID(id);
 		switch(result){
 			case "checked":{
@@ -35,7 +34,7 @@
 	%>
 	
 	<FORM METHOD=POST action="Join.jsp">
-		<INPUT TYPE="hidden" NAME="idcheck" VALUE=<%=result%>>
+		<INPUT TYPE="hidden" NAME="CheckValue" VALUE=<%=result%>>
 		<INPUT TYPE="hidden" NAME="id" VALUE=<%=id%>>
 		<input TYPE="submit" VALUE="확인">
 	</FORM>
