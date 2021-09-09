@@ -1,21 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ page import="Pack.Person" %>
 <%@ page import="Pack.MySQL" %>
     
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body align = 'center'>
 	
 	
 	<jsp:useBean id='recv' class='Pack.Person' scope='page'/>
-	<!-- °´Ã¼°¡ »ý¼ºµÇ¸é 'recv'¶ó´Â ÀÌ¸§À» °¡Áö°Ù´Ù -->
-	<!-- °´Ã¼°¡ »ç¿ëÀÇ À¯Çü¹üÀ§´Â ÀÌ ÆäÀÌÁö ¾È¿¡¼­»ç¿ëÇÏ°Ù´Ù -->
+	<!-- ê°ì²´ê°€ ìƒì„±ë˜ë©´ 'recv'ë¼ëŠ” ì´ë¦„ì„ ê°€ì§€ê²Ÿë‹¤ -->
+	<!-- ê°ì²´ê°€ ì‚¬ìš©ì˜ ìœ í˜•ë²”ìœ„ëŠ” ì´ íŽ˜ì´ì§€ ì•ˆì—ì„œì‚¬ìš©í•˜ê²Ÿë‹¤ -->
 	
 	<jsp:setProperty name='recv' property='id' />
 	<jsp:setProperty name='recv' property='pass'/>
@@ -25,50 +23,51 @@
 	String msg = null;
 	String checkID = recv.getId();
 	String checkPW = recv.getPass();
-	System.out.println("¹Þ¾Æ¿Â ID:" + checkID);
-	System.out.println("¹Þ¾Æ¿Â PW:" +checkPW);
+	System.out.println("ë°›ì•„ì˜¨ ID:" + checkID);
+	System.out.println("ë°›ì•„ì˜¨ PW:" +checkPW);
 	%>
 	
 	<jsp:useBean id='SQL' class='Pack.MySQL' scope='page'/>
 	
 	<%
 	int num = SQL.readlogin(checkID, checkPW); 
-	// 0 = ·Î±×ÀÎ ¿À·ù ¹ß»ý
-	// 1 = ID°¡ ¾øÀ½
-	// 2 = ID´Â ¸ÂÁö¸¸ PW°¡ Æ²¸²
-	// 3 = ID PW µÑ´Ù ¸ÂÀ½
+	// 0 = ë¡œê·¸ì¸ ì˜¤ë¥˜ ë°œìƒ
+	// 1 = IDê°€ ì—†ìŒ
+	// 2 = IDëŠ” ë§žì§€ë§Œ PWê°€ í‹€ë¦¼
+	// 3 = ID PW ë‘˜ë‹¤ ë§žìŒ
 	System.out.println(num);
 	switch (num) {
 	case 0: {
-		head = "·Î±×ÀÎ½ÇÆÐ";
-		msg = "·Î±×ÀÎ ¿À·ù ¹ß»ý";
+		head = "ë¡œê·¸ì¸ì‹¤íŒ¨";
+		msg = "ë¡œê·¸ì¸ ì˜¤ë¥˜ ë°œìƒ";
 		break;
 	}
 	case 1: {
-		head = "·Î±×ÀÎ½ÇÆÐ";
-		msg = "ID¸¦ È®ÀÎ ºÎÅ¹µå¸³´Ï´Ù.";
+		head = "ë¡œê·¸ì¸ì‹¤íŒ¨";
+		msg = "IDë¥¼ í™•ì¸ ë¶€íƒë“œë¦½ë‹ˆë‹¤.";
 		break;
 	}
 	case 2: {
-		head = "·Î±×ÀÎ½ÇÆÐ";
-		msg = "PW¸¦ È®ÀÎ ºÎÅ¹µå¸³´Ï´Ù.";
+		head = "ë¡œê·¸ì¸ì‹¤íŒ¨";
+		msg = "PWë¥¼ í™•ì¸ ë¶€íƒë“œë¦½ë‹ˆë‹¤.";
 		break;
 	}
 	case 3: {
-		head = "·Î±×ÀÎ¼º°ø";
-		msg = "·Î±×ÀÎ µÇ¾ú½À´Ï´Ù!";
+		head = "ë¡œê·¸ì¸ì„±ê³µ";
+		msg = "ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤!";
 		break;
 	}
 	default:
-		head = "·Î±×ÀÎ½ÇÆÐ";
-		msg = "·Î±×ÀÎ ¿À·ù ¹ß»ý";
+		head = "ë¡œê·¸ì¸ì‹¤íŒ¨";
+		msg = "ë¡œê·¸ì¸ ì˜¤ë¥˜ ë°œìƒ";
 		break;
 	}
 	System.out.println(msg);
 	%>
 	
 	<h1><%= head %></h1>
-	<div><%= checkID %>´Ô! <%= msg %></div>
+	<div><%= checkID %>ë‹˜! <%= msg %></div><br/>
+	<button style='background-color:#FFC0CB; color:#ffffff; border:0; border-radius:20px; width:100px; height:30px;' onClick=location.href='index.html'>í™ˆìœ¼ë¡œ</button>
 	
 	
 
