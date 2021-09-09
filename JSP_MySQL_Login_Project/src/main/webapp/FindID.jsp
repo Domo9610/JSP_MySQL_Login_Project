@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<FORM METHOD = Post action = "IDresult.jsp">
+<FORM METHOD = Post action = "IDResult.jsp">
 					<table width='100' border='1' cellpadding= '10' cellspacing = '5' align='center'>
 						
 						<tr align='center'>

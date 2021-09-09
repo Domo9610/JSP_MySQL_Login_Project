@@ -130,47 +130,48 @@ public class MySQL {
 		return checknum;
 	}
 	
-//	public String findID(String name, String email) {
-//		
-//		String sql = " select * from UserList ";
-//		PreparedStatement pstmt = null;
-//		
-//		String checkname ;
-//		String checkemail ;
-//		String resultID ;
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			ResultSet rs = pstmt.executeQuery();
-//			System.out.println("[ select 메서드 실행 ]");
-//			
-//			while(rs.next()) {
-//				checkname = rs.getString("FullName");
-//				checkemail = rs.getString("Email");
-//
-//				if(name.equals(checkname)) {
-//					resultID = email.equals()? 3 : 2;
-//				}
-//				else {
-//					checknum = 1;
-//				}
-//			}
-//			return "님의 계정을 찾지 못하였습니다.";
-//
-//		}
-//		catch(Exception e) {
-//			System.out.println("[ select 메서드 예외발생 ]");
-//		}    finally {
-//			try {
-//				if(pstmt!=null && !pstmt.isClosed()) {
-//					pstmt.close();
-//					return "찾기 도중 오류가 발생했습니다.";
-//				}
-//			} catch (Exception e2) {}
-//		}
-//		return "찾기 도중 오류가 발생했습니다.";
-//		
-//	}
+	public String findID(String name, String email) {
+		
+		String sql = " select * from UserList ";
+		PreparedStatement pstmt = null;
+		
+		String checkname ;
+		String checkemail ;
+		String resultID = null ;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			System.out.println("[ select 메서드 실행 ]");
+			System.out.println(name);
+			System.out.println(email);
+			
+			while(rs.next()) {
+				checkname = rs.getString("FullName");
+				checkemail = rs.getString("Email");
+
+				if(name.equals(checkname)) {
+					resultID = email.equals(checkemail)? "님의 ID는 " + rs.getString("ID") + " 입니다." : "님의 Email을 확인 해주세요." ;
+				}
+				else {
+					resultID = "님의 이름으로 된 계정이 없습니다.";
+				}
+			}
+			return resultID;
+		}
+		catch(Exception e) {
+			System.out.println("[ select 메서드 예외발생 ]");
+		}    finally {
+			try {
+				if(pstmt!=null && !pstmt.isClosed()) {
+					pstmt.close();
+					return resultID;
+				}
+			} catch (Exception e2) {}
+		}
+		return resultID;
+	}
+
 
 	public void update(String a, int b, int c) {
 		String sql = "update table01 set Age=?, Salary=? where FullName=?";
