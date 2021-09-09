@@ -35,4 +35,8 @@ public class Person {
 	public String getDate() { return date; }
 	public void setDate(String date) { this.date = date; }
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> a966cce99da21e03588af53a2c3086042cae46c4
 }
