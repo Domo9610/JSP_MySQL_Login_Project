@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class MySQL {
 	private Connection conn; //DB 커넥션 연결 객체
 	private final String USERNAME = "root";//DBMS접속 시 아이디
@@ -59,12 +58,15 @@ public class MySQL {
 		String sql = "select ID from UserList;";
 		PreparedStatement pstmt = null;
 		String CHECK="checked";
+		System.out.println("가지고 온 :"+s);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String id=rs.getString("ID");
+				System.out.println("DB에 있는 아이디: "+id);
 				if(id.equals(s)) {
+					System.out.println("중복 확인된 아이디: "+id);
 					CHECK="denied";
 					break;
 				}
@@ -83,7 +85,6 @@ public class MySQL {
 		return CHECK;
 	}
 	
-
 	public int readlogin(String id, String pw) {
 		String sql = " select * from UserList ";
 		PreparedStatement pstmt = null;
@@ -130,7 +131,45 @@ public class MySQL {
 		return checknum;
 	}
 	
-	public String findID(String name, String email) {
+	public boolean readall(String id, String name, String num) {
+		String sql = " select * from UserList ";
+		PreparedStatement pstmt = null;
+		
+		int checknum = 0;
+		String checkID = null;
+		String checkName = null;
+		String checkNumber = null;
+		boolean result = false;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			System.out.println("[ select 메서드 실행 ]");
+			
+			while(rs.next()) {
+				checkID = rs.getString("ID");
+				checkName = rs.getString("FullName");
+				checkNumber = rs.getString("PhoneNumber");
+				
+				if(id.equals(checkID) && name.equals(checkName) && num.equals(checkNumber)) {
+					result=true;
+				}
+			}
+		}
+		catch(Exception e) {
+			System.out.println("[ select 메서드 예외발생 ]");
+		}    finally {
+			try {
+				if(pstmt!=null && !pstmt.isClosed()) {
+					pstmt.close();
+					return result;
+				}
+			} catch (Exception e2) {}
+		}
+		return result;
+	}
+	
+public String findID(String name, String email) {
 		
 		String sql = " select * from UserList ";
 		PreparedStatement pstmt = null;
@@ -172,17 +211,15 @@ public class MySQL {
 		return resultID;
 	}
 
-
-	public void update(String a, int b, int c) {
-		String sql = "update table01 set Age=?, Salary=? where FullName=?";
+	public void update(String id, String pw) {
+		String sql = "update table01 set PW=? where ID=?";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,b);
-			pstmt.setInt(2,c);
-			pstmt.setString(3,a);
+			pstmt.setString(1,pw);
+			pstmt.setString(2,id);
 			pstmt.executeUpdate();
-			System.out.println("[ Name : " + a + "수정됨 ]");
+			System.out.println("[ ID : " + id + "수정됨 ]");
 
 		} catch (Exception e) {
 			System.out.println("[ update 메서드 예외 발생 ] ");
@@ -198,7 +235,7 @@ public class MySQL {
 
 
 	public void delete(String a) {
-		String sql = "Delete from table01 where FullName= ? ";
+		String sql = "Delete from UserList where FullName= ? ";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement(sql);

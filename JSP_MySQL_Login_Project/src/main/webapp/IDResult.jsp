@@ -1,16 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="Pack.Person" %>
+<%@ page import="Pack.MySQL" %>
+
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
-<body>
+
+<body align = 'center'>
 
 <jsp:useBean id='recv' class='Pack.Person' scope='page'/>
-	<!-- °´Ã¼°¡ »ý¼ºµÇ¸é 'recv'¶ó´Â ÀÌ¸§À» °¡Áö°Ù´Ù -->
-	<!-- °´Ã¼°¡ »ç¿ëÀÇ À¯Çü¹üÀ§´Â ÀÌ ÆäÀÌÁö ¾È¿¡¼­»ç¿ëÇÏ°Ù´Ù -->
+	<!-- ê°ì²´ê°€ ìƒì„±ë˜ë©´ 'recv'ë¼ëŠ” ì´ë¦„ì„ ê°€ì§€ê²Ÿë‹¤ -->
+	<!-- ê°ì²´ê°€ ì‚¬ìš©ì˜ ìœ í˜•ë²”ìœ„ëŠ” ì´ íŽ˜ì´ì§€ ì•ˆì—ì„œì‚¬ìš©í•˜ê²Ÿë‹¤ -->
 	
 	<jsp:setProperty name='recv' property='name' />
 	<jsp:setProperty name='recv' property='email'/>
@@ -19,8 +23,8 @@
 	String msg = null;
 	String checkname = recv.getName();
 	String checkemail = recv.getEmail();
-	System.out.println("¹Þ¾Æ¿Â name:" + checkname);
-	System.out.println("¹Þ¾Æ¿Â email:" +checkemail);
+	System.out.println("ë°›ì•„ì˜¨ name:" + checkname);
+	System.out.println("ë°›ì•„ì˜¨ email:" +checkemail);
 	%>
 	
 	<jsp:useBean id='SQL' class='Pack.MySQL' scope='page'/>
@@ -29,9 +33,11 @@
 	String result = SQL.findID(checkname, checkemail); 
 	%>
 	
-	<h1>Ã£±â °á°ú</h1>
-	<div><%= checkname %><%= result %></div>
-
+	<h1>ì°¾ê¸° ê²°ê³¼</h1>
+	<hr/>
+	<div><%= checkname %><%= result %></div><br/>
+	<button style='background-color:#FFC0CB; color:#ffffff; border:0; border-radius:20px; width:100px; height:30px;' onClick=location.href='FindID.jsp'>ë‹¤ì‹œ ìž…ë ¥</button>
+	<button style='background-color:#FFC0CB; color:#ffffff; border:0; border-radius:20px; width:100px; height:30px;' onClick=location.href='index.html'>í™ˆìœ¼ë¡œ</button>
 
 </body>
 </html>

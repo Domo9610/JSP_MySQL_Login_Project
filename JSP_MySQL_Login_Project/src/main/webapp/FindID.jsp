@@ -1,31 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>ID李얘린</title>
 </head>
-<body>
-<FORM METHOD = Post action = "IDResult.jsp">
-					<table width='100' border='1' cellpadding= '10' cellspacing = '5' align='center'>
-						
-						<tr align='center'>
-							<td colspan='3'>ID찾기</td>
-						</tr>
-						
-						
-						<tr>
-							<td width ='10%'>이름</td>
-							<td><input type='text' name='name'></td>
-							<td rowspan="2"><input type='submit' value = '찾기'></td>
-						</tr>	
-						
-						<tr>
-							<td>Email</td>
-							<td><input type='text' name='email'></td>
-						</tr>	
-					</table>
-					</FORM>
+
+<body align='center'>
+	<h1>ID李얘린</h1>
+	<hr/>
+	
+	<FORM METHOD=Post action="IDresult.jsp">
+		<table  cellpadding='5' cellspacing='5' align='center'>
+
+			<tr>
+				<td >�씠由�</td>
+				<td><input type='text' name='name'></td>
+				<td rowspan="2"><button style='background-color: #FFC0CB; color: #ffffff; border: 0; border-radius: 20px; width: 100px; height: 30px;'>李얘린</button></td>
+			</tr>
+
+			<tr>
+				<td>E-mail</td>
+				<td><input type='text' name='email'></td>
+			</tr>
+		</table>
+	</FORM>
 </body>
 </html>
