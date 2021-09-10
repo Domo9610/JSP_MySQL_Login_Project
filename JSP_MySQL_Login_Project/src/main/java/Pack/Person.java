@@ -30,7 +30,10 @@ public class Person {
 	public void setDate(String date) { this.date = date; }
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> f8aabbd9f4e61f3d3ef388702e541de725e92be6
+=======
+>>>>>>> dohun
 }
